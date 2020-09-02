@@ -1,8 +1,10 @@
 import os
 
+##----此处填写内容开始----
+
 # 填入log路径和目标路径
-sourcePath = "源文本/log.txt"
-destPath = "输出"
+sourcePath = "源文本/replay1/log.txt"
+destPath = "输出/replay1"
 # 人物名称列表，为了便于处理，请将骰娘也加入其中
 roles = ['墨刺','木刀','{指定唯一神}满大人']
 # 骰娘列表
@@ -21,6 +23,7 @@ roles_voice_param =[
     {'显示名':'{指定唯一神}满大人','发音人':'Microsoft Kangkang Mobile - Chinese (Simplified, PRC)','音量':100,'语速':5,'语调':0},
 ]
 
+##----此处填写内容结束----
 
 f_log =  open(sourcePath, mode = 'r', encoding='utf-8')
 if not os.path.exists(destPath+"/audio"): os.makedirs(destPath+"/audio")
