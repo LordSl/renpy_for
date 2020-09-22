@@ -2,11 +2,11 @@ from pydub import AudioSegment
 from pydub.utils import mediainfo
 
 # 请先使用朗读女将rpy_make生成的合总txt转换成mp3，并生成lrc文件
-sourcePath = '输出/replay1/audio'
-destPath = '输出/replay1/audio'
+sourcePath = '输出/潮土油P1/audio'
+destPath = '输出/潮土油P1/audio'
 
 #获取时间分割位点
-f_lyr =  open(sourcePath+'/log.lrc', mode = 'r', encoding='ANSI')
+f_lyr =  open(sourcePath+'/log_o.lrc', mode = 'r', encoding='ANSI')
 lyr = f_lyr.readlines()
 time_split = [0]
 for i in range(1,len(lyr)):
