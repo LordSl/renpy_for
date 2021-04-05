@@ -3,15 +3,16 @@ import os
 ##----此处填写内容开始----
 
 # 填入log路径和目标路径
-sourcePath = "源文本/潮土油P3"
-destPath = "输出/潮土油P3"
+sourcePath = "源文本/P6战斗轮"
+destPath = "输出/P6战斗轮"
 #是否要生成rpy文本 1.是 2.否
 rpy_mode = 1
 # 声音合成模式 0.不合成 1.合总合成 2.分段合成
 audio_mode = 2
 # 骰娘列表
 diceGirls = ['小满']
-
+# 文件前缀
+front_id = 'n'
 ##----此处填写内容结束----
 
 f_log =  open(sourcePath+'/log_o.txt', mode = 'r', encoding='utf-8')
@@ -51,13 +52,13 @@ if(rpy_mode == 1):
             continue
         if (i == 0):
             f_rpy.write(
-                '    show ' + roles[orders[i]] + '\n')
+                '    show ' + roles[orders[i]] + '\n    with dissolve\n')
         # 需要更换立绘
         if (i != 0 and orders[i] != orders[i - 1]):
             f_rpy.write('    hide ' + roles[orders[i - 1]] + '\n\n')
-            f_rpy.write('    show ' + roles[orders[i]] + '\n')
+            f_rpy.write('    show ' + roles[orders[i]] + '\n    with dissolve\n')
         if (roles[orders[i]] not in diceGirls):
-            f_rpy.write('    voice \'../audio/' + str(voice_num) + '.mp3\'\n')
+            f_rpy.write('    voice \'../audio/' + front_id + str(voice_num) + '.mp3\'\n')
             voice_num += 1
         else:# 骰娘音效
             f_rpy.write('    voice \'../audio/骰娘的声音.mp3\'\n')
@@ -103,7 +104,8 @@ elif (audio_mode == 2):
             audio_file_name = roles[orders[i]]
             if not os.path.exists(destPath + '/audio/' + audio_file_name): os.makedirs(
                 destPath + '/audio/' + audio_file_name)
-            f_voice = open(destPath + '/audio/' + audio_file_name + '/' + str(voice_num) + '.txt', mode='w',
+            #这里负责输出后的文件名
+            f_voice = open(destPath + '/audio/' + audio_file_name + '/' + front_id + str(voice_num) + '.txt', mode='w',
                            encoding='utf-8')
             f_voice.write(dialogues[i]+'\n')
             voice_num += 1

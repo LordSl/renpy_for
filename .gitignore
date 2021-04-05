@@ -1,5 +1,7 @@
 Include/
 Store/
-/终极自动脚本for renpy/
-/源文本/replay1/
-/输出/replay1/
+/源文本
+/输出
+format
+.idea
+
